@@ -1,0 +1,82 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:8b3353e1-5e4c-4e89-98e3-a44bfec0927a",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-08T03:09:50.048Z",
+    "authors": [
+      {
+        "name": "Senior Cybersecurity Auditor",
+        "role": "PQC Discovery Specialist"
+      }
+    ],
+    "component": {
+      "name": "SecureNetworkBroker",
+      "type": "application",
+      "version": "1.0.0-legacy"
+    }
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-2048 Private Key",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "name": "RSA",
+          "primitive": "asymmetric-signing-and-encryption",
+          "classicalSecurityLevel": 112,
+          "nistQuantumSecurityLevel": 0,
+          "nistPqcStatus": "VULNERABLE_SHOR"
+        },
+        "oid": "1.2.840.113549.1.1.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SECP256R1 ECDH Key Agreement",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "name": "ECDH-P256",
+          "primitive": "key-agreement",
+          "classicalSecurityLevel": 128,
+          "nistQuantumSecurityLevel": 0,
+          "nistPqcStatus": "VULNERABLE_SHOR"
+        },
+        "oid": "1.2.840.10045.2.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-128-CBC Symmetric Cipher",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "name": "AES-CBC",
+          "primitive": "block-cipher",
+          "classicalSecurityLevel": 128,
+          "nistQuantumSecurityLevel": 1,
+          "nistPqcStatus": "HALVED_GROVER"
+        },
+        "oid": "2.16.840.1.101.3.4.1.2"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256 Digest",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "name": "SHA-256",
+          "primitive": "message-digest",
+          "classicalSecurityLevel": 256,
+          "nistQuantumSecurityLevel": 3,
+          "nistPqcStatus": "QUANTUM_RESISTANT"
+        },
+        "oid": "2.16.840.1.101.3.4.2.1"
+      }
+    }
+  ]
+}

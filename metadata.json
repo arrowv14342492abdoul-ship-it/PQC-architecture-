@@ -1,0 +1,6 @@
+{
+  "name": "PQC Architect & Crypto-Agility Transition Platform",
+  "description": "Enterprise Post-Quantum Cryptography transition roadmap designer, TLS 1.3 hybrid key exchange analyzer, FIPS 204 certificate sizing simulator, and crypto-agility architecture workbench based on NIST and TCG guidelines.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

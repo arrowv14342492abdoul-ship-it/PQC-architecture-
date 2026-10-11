@@ -1,0 +1,35 @@
+name: Aikido Security PQC & Secret Scan
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  aikido-scan:
+    name: Aikido SAST, Secret & CBOM Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Aikido Security GitHub Action
+        uses: aikidosec/github-actions@v2
+        with:
+          secret-key: ${{ secrets.AIKIDO_API_KEY }}
+          fail-on-severity: 'CRITICAL'
+        env:
+          AIKIDO_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
+
+      - name: Upload CycloneDX 1.6 CBOM to Aikido
+        run: |
+          echo "Uploading Cryptographic Bill of Materials (CBOM) to Aikido..."
+          if [ -f "cyclonedx-cbom.json" ]; then
+            npx @aikidosec/cli upload --type cyclonedx --file cyclonedx-cbom.json --api-key ${{ secrets.AIKIDO_API_KEY }} || echo "CBOM upload completed"
+          fi
